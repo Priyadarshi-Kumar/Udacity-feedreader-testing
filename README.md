@@ -37,4 +37,7 @@ Write the test suite for an web application named feedreader.
 
 ## For Demo
 
-<p>Clone the repository.</p>
+<ol>
+	<li>Clone or download the repository.</li>
+	<li>open index.html file in any browser.</li>
+</ol>
