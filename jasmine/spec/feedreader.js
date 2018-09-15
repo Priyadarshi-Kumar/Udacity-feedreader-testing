@@ -45,7 +45,7 @@ $(function() {
         // Test that menu element is hidden by default.
 
          it('Menu element is hidden by default', () => {
-            expect(body.className).toContain('sub-menu-hidden menu-hidden');
+            expect(body.className).toContain('menu-hidden');
          });
 
         // This test ensures that menu changes visibility after menu icon is clicked.
@@ -73,9 +73,7 @@ $(function() {
          });
         
         it('atleast a single entry', () => {
-            let feed = document.querySelector('.feed');
-            let entries = document.querySelector('.entry');
-            expect(('feed, entries').length).toBeGreaterThan(0);
+            expect((document.querySelector('.feed').querySelectorAll('.entry')).length).toBeGreaterThan(0);
         });
 
     });
@@ -87,9 +85,11 @@ $(function() {
 
         // Tests ensures that when new feed is loaded the content change.
         
+        let firstFeed;
+
          beforeEach((done) => {
             loadFeed(0, () => {
-                let firstFeed = document.querySelector('.feed').innerHTML;
+                firstFeed = document.querySelector('.feed').innerHTML;
                 loadFeed(1, () => {
                     done();
                 });
@@ -98,7 +98,7 @@ $(function() {
 
          let nextFeed = document.querySelector('.feed').innerHTML;
          it('content changed', () => {
-            expect(firstFeed).not.toBe(nextFeed);
+            expect(nextFeed).not.toBe(firstFeed);
          });
 
     });
