@@ -37,4 +37,4 @@ Write the test suite for an web application named feedreader.
 
 ## For Demo
 
-<p>Visit <a href="https://priyadarshi-kumar.github.io/Udacity-feedreader-testing/"> this link</a></p>
+<p>Clone the repository.</p>
