@@ -101,18 +101,45 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-         
+         beforeEach((done) => {
+            loadFeed(0, () => {
+                done();
+            });
+         });
+        
+        it('atleast a single entry', () => {
+            let feed = document.querySelector('.feed');
+            let entries = document.querySelector('.entry');
+            expect(('feed, entries').length).toBeGreaterThan(0);
+        });
 
     });
 
     
-
-        
-
     /* TODO: Write a new test suite named "New Feed Selection" */
+
+    describe('New Feed Selection', () => {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+         beforeEach((done) => {
+            loadFeed(0, () => {
+                let firstFeed = document.querySelector('.feed').innerHTML;
+                loadFeed(1, () => {
+                    done();
+                });
+            })
+         });
+
+         let nextFeed = document.querySelector('.feed').innerHTML;
+         it('content changed', () => {
+            expect(firstFeed).not.toBe(nextFeed);
+         });
+
+    });
+
+        
 }());
